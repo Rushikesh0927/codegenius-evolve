@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
@@ -134,9 +135,9 @@ const Index = () => {
           <div className="mt-20 max-w-5xl mx-auto" style={section1Fade.style}>
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent z-10 pointer-events-none h-20 bottom-0 top-auto"></div>
-              <CodeEditor 
-                height="400px"
-                initialCode={`// Example: AI-powered code generation
+              <div className="bg-card border shadow-sm rounded-xl p-6 overflow-hidden">
+                <pre className="text-sm overflow-x-auto">
+{`// Example: AI-powered code generation
 import { fetchData } from './api';
 
 /**
@@ -165,7 +166,8 @@ async function getUserInsights(userId) {
 }
 
 // Helper functions would be defined below...`}
-              />
+                </pre>
+              </div>
             </div>
           </div>
         </div>
