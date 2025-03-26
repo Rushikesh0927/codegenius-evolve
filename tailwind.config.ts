@@ -111,10 +111,6 @@ export default {
 					'0%': { backgroundPosition: '-500px 0' },
 					'100%': { backgroundPosition: '500px 0' }
 				},
-				'typewriter': {
-					'0%': { width: '0%' },
-					'100%': { width: '100%' }
-				},
 				'blink': {
 					'0%, 100%': { opacity: '1' },
 					'50%': { opacity: '0' }
@@ -132,7 +128,6 @@ export default {
 				'enter': 'fade-in 0.3s ease-out, scale-in 0.2s ease-out',
 				'exit': 'fade-out 0.3s ease-out, scale-out 0.2s ease-out',
 				'shimmer': 'shimmer 1.5s infinite linear',
-				'typewriter': 'typewriter 2s steps(40, end)',
 				'blink-cursor': 'blink 0.7s infinite'
 			},
 			backdropFilter: {

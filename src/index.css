@@ -98,12 +98,13 @@
   }
 
   .animate-typewriter {
-    @apply inline-block overflow-hidden whitespace-nowrap animate-typewriter;
+    @apply inline-block overflow-hidden whitespace-nowrap;
+    animation: typewriter 2s steps(40, end);
   }
 
   .animate-typewriter::after {
     content: '|';
-    @apply animate-blink-cursor;
+    animation: blink 0.7s infinite;
   }
 
   .code-block {
@@ -133,6 +134,16 @@
   .shimmer {
     @apply relative overflow-hidden bg-gradient-to-r from-transparent via-white/20 to-transparent bg-[length:500px_100%] animate-shimmer;
   }
+}
+
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 @keyframes border-animation {
