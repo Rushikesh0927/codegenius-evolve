@@ -1,5 +1,5 @@
-
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CodeEditor from '@/components/CodeEditor';
@@ -21,6 +21,7 @@ import {
 import { Button } from "@/components/ui/button";
 
 const Index = () => {
+  const navigate = useNavigate();
   const [isDarkMode, setIsDarkMode] = useState(false);
   const heroTitle = useTypewriter("The future of coding is intelligent.");
   const heroSubtitle = useTypewriter("An AI-powered platform that writes, debugs, and executes code.", 50, 2000);
@@ -44,6 +45,18 @@ const Index = () => {
   
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
+  };
+
+  const handleGetStarted = () => {
+    navigate('/get-started');
+  };
+
+  const handleWatchDemo = () => {
+    // For now, this could scroll to the demo section or open a modal
+    const editorSection = document.getElementById('editor');
+    if (editorSection) {
+      editorSection.scrollIntoView({ behavior: 'smooth' });
+    }
   };
   
   const features = [
@@ -101,10 +114,19 @@ const Index = () => {
             </div>
             
             <div style={heroButton.style}>
-              <Button size="lg" className="rounded-full text-lg px-8 mr-4">
+              <Button 
+                size="lg" 
+                className="rounded-full text-lg px-8 mr-4"
+                onClick={handleGetStarted}
+              >
                 Get Started <ChevronRight className="ml-2 h-5 w-5" />
               </Button>
-              <Button variant="outline" size="lg" className="rounded-full text-lg px-8">
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="rounded-full text-lg px-8"
+                onClick={handleWatchDemo}
+              >
                 Watch Demo
               </Button>
             </div>
@@ -244,10 +266,20 @@ async function getUserInsights(userId) {
             Join thousands of developers who are writing better code faster with our AI-powered platform.
           </p>
           <div>
-            <Button size="lg" variant="secondary" className="rounded-full text-lg px-8 mr-4 text-primary">
+            <Button 
+              size="lg" 
+              variant="secondary" 
+              className="rounded-full text-lg px-8 mr-4 text-primary"
+              onClick={handleGetStarted}
+            >
               Get Started Free
             </Button>
-            <Button size="lg" variant="outline" className="rounded-full text-lg px-8 border-white text-white hover:bg-white hover:text-primary">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="rounded-full text-lg px-8 border-white text-white hover:bg-white hover:text-primary"
+              onClick={() => navigate('/pricing')}
+            >
               View Pricing
             </Button>
           </div>
