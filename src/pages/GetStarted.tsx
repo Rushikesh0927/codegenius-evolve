@@ -1,14 +1,22 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Rocket } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useTypewriter, useFadeIn } from '@/utils/animations';
 
 const GetStarted = () => {
+  const navigate = useNavigate();
   const title = useTypewriter("Let's get you coding with AI");
   const subtitle = useTypewriter("Set up your first project in minutes", 50, 1000);
   const content = useFadeIn(1500);
+
+  const handleCreateProject = () => {
+    // In a real application, this would create a new project
+    // For now, we'll navigate to a hypothetical project creation page or back to home
+    navigate('/');
+    // You could also show a toast notification here
+  };
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -61,7 +69,7 @@ const GetStarted = () => {
             </ol>
             
             <div className="mt-8 flex justify-center">
-              <Button size="lg" className="rounded-full">
+              <Button size="lg" className="rounded-full" onClick={handleCreateProject}>
                 Create New Project
               </Button>
             </div>
