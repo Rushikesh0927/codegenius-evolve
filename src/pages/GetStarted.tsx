@@ -1,9 +1,9 @@
-
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Rocket } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useTypewriter, useFadeIn } from '@/utils/animations';
+import { toast } from "sonner";
 
 const GetStarted = () => {
   const navigate = useNavigate();
@@ -12,10 +12,8 @@ const GetStarted = () => {
   const content = useFadeIn(1500);
 
   const handleCreateProject = () => {
-    // In a real application, this would create a new project
-    // For now, we'll navigate to a hypothetical project creation page or back to home
-    navigate('/');
-    // You could also show a toast notification here
+    toast.success("New project created successfully!");
+    navigate('/editor');
   };
 
   return (

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import CodeEditor from '@/components/CodeEditor';
 import AIChat from '@/components/AIChat';
 import { useTypewriter, useFadeIn, useScrollReveal } from '@/utils/animations';
 import { 
@@ -52,10 +51,10 @@ const Index = () => {
   };
 
   const handleWatchDemo = () => {
-    // For now, this could scroll to the demo section or open a modal
-    const editorSection = document.getElementById('editor');
-    if (editorSection) {
-      editorSection.scrollIntoView({ behavior: 'smooth' });
+    // For now, this could scroll to the demo section
+    const aboutSection = document.getElementById('about');
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
   
@@ -209,83 +208,6 @@ async function getUserInsights(userId) {
         </div>
       </section>
       
-      {/* Editor Section */}
-      <section id="editor" className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <div className="inline-flex items-center text-sm font-medium text-primary mb-4">
-                <Code className="h-4 w-4 mr-2" />
-                Code Smarter, Not Harder
-              </div>
-              <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">
-                A coding environment that adapts to you
-              </h2>
-              <p className="text-xl text-muted-foreground mb-6">
-                Our intelligent editor understands your code, offering context-aware suggestions and real-time debugging to help you focus on solving problems, not fighting syntax.
-              </p>
-              <ul className="space-y-4 mb-8">
-                {[
-                  "Smart code completion across multiple languages",
-                  "Real-time error detection and suggested fixes",
-                  "Automatic documentation generation",
-                  "Code refactoring and optimization suggestions",
-                  "Secure cloud-based execution environment"
-                ].map((item, index) => (
-                  <li key={index} className="flex items-start">
-                    <div className="bg-primary/10 rounded-full p-1 mr-3 mt-1">
-                      <svg className="h-3 w-3 text-primary" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
-                    </div>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <Button size="lg" className="rounded-full">
-                Try the Editor <ChevronRight className="ml-2 h-5 w-5" />
-              </Button>
-            </div>
-            <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/30 to-purple-500/30 blur-3xl opacity-20 rounded-3xl"></div>
-              <div className="relative">
-                <CodeEditor />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-500 to-purple-500 text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-display font-bold mb-6 max-w-2xl mx-auto">
-            Ready to experience the future of coding?
-          </h2>
-          <p className="text-xl opacity-90 mb-10 max-w-2xl mx-auto">
-            Join thousands of developers who are writing better code faster with our AI-powered platform.
-          </p>
-          <div>
-            <Button 
-              size="lg" 
-              variant="secondary" 
-              className="rounded-full text-lg px-8 mr-4 text-primary"
-              onClick={handleGetStarted}
-            >
-              Get Started Free
-            </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="rounded-full text-lg px-8 border-white text-white hover:bg-white hover:text-primary"
-              onClick={() => navigate('/pricing')}
-            >
-              View Pricing
-            </Button>
-          </div>
-        </div>
-      </section>
-      
       {/* About Section */}
       <section id="about" className="py-20">
         <div className="container mx-auto px-4">
@@ -365,7 +287,44 @@ async function getUserInsights(userId) {
                   </li>
                 ))}
               </ul>
+              <Button 
+                size="lg" 
+                className="rounded-full"
+                onClick={() => navigate('/get-started')}
+              >
+                Try it Now <ChevronRight className="ml-2 h-5 w-5" />
+              </Button>
             </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-blue-500 to-purple-500 text-white">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-display font-bold mb-6 max-w-2xl mx-auto">
+            Ready to experience the future of coding?
+          </h2>
+          <p className="text-xl opacity-90 mb-10 max-w-2xl mx-auto">
+            Join thousands of developers who are writing better code faster with our AI-powered platform.
+          </p>
+          <div>
+            <Button 
+              size="lg" 
+              variant="secondary" 
+              className="rounded-full text-lg px-8 mr-4 text-primary"
+              onClick={handleGetStarted}
+            >
+              Get Started Free
+            </Button>
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="rounded-full text-lg px-8 border-white text-white hover:bg-white hover:text-primary"
+              onClick={() => navigate('/pricing')}
+            >
+              View Pricing
+            </Button>
           </div>
         </div>
       </section>
