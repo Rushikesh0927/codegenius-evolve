@@ -47,12 +47,38 @@ export async function getAICompletion({
     // });
     
     // Simulate API delay
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise(resolve => setTimeout(resolve, 1500));
     
     // Simulate API response based on the request
     let simulatedResponse = "";
     
-    if (text.includes("hello") || text.includes("hi")) {
+    if (text.includes("Fix the following")) {
+      // Coding error fix simulation based on language
+      if (language === "javascript" || language === "typescript") {
+        if (text.includes("is not defined") || text.includes("is not a function")) {
+          simulatedResponse = "```javascript\n// Fixed the undefined function or variable\nfunction helloWorld() {\n  console.log(\"Hello, world!\");\n  return \"Hello, world!\";\n}\n\n// Define missing function before calling it\nfunction processData(data) {\n  return data.toUpperCase();\n}\n\n// Call the functions\nhelloWorld();\nprocessData(\"test\");\n```";
+        } else if (text.includes("syntax error") || text.includes("Unexpected token")) {
+          simulatedResponse = "```javascript\n// Fixed the syntax error\nfunction helloWorld() {\n  console.log(\"Hello, world!\");\n  return \"Hello, world!\";\n}\n\n// Fixed missing brackets or quotes\nconst data = { name: \"test\" };\nconsole.log(data.name);\n\n// Call the function\nhelloWorld();\n```";
+        } else {
+          simulatedResponse = "```javascript\n// Generic fix for JavaScript/TypeScript\nfunction helloWorld() {\n  console.log(\"Hello, world!\");\n  return \"Hello, world!\";\n}\n\n// Fixed the issues in the code\nconst result = helloWorld();\nconsole.log(`The result is: ${result}`);\n```";
+        }
+      } else if (language === "python") {
+        simulatedResponse = "```python\n# Fixed Python code\ndef hello_world():\n    print(\"Hello, world!\")\n    return \"Hello, world!\"\n\n# Call the function\nresult = hello_world()\nprint(f\"The result is: {result}\")\n```";
+      } else {
+        simulatedResponse = `I've fixed the ${language} code by correcting syntax errors, adding missing functions, and ensuring proper variable definitions. Here's the corrected code:
+
+\`\`\`${language}
+// Fixed code for ${language}
+// Example implementation that should work correctly
+function main() {
+  console.log("Hello, world!");
+  return "Success";
+}
+
+main();
+\`\`\``;
+      }
+    } else if (text.includes("hello") || text.includes("hi")) {
       simulatedResponse = "Hello! I'm your coding assistant. How can I help you today?";
     } else if (text.includes("function") || text.includes("code")) {
       simulatedResponse = `Here's a sample ${language} function that might help:\n\n\`\`\`${language}\nfunction processData(input: string): string {\n  // Process the input\n  return input.trim().toUpperCase();\n}\n\`\`\`\n\nYou can use this as a starting point for your implementation.`;

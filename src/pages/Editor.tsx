@@ -16,7 +16,7 @@ const Editor = () => {
         <div className="max-w-4xl mx-auto">
           <h1 className="text-3xl font-display font-bold mb-6">Code Editor</h1>
           <p className="text-xl text-muted-foreground mb-8">
-            Write, test, and execute your code in our intelligent editor.
+            Write, test, and execute your code in our intelligent editor with AI-powered error fixing.
           </p>
           
           <CodeEditor height="600px" />
